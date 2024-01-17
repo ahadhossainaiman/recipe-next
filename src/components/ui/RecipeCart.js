@@ -1,18 +1,54 @@
-"use client"
+'use client'
 import React from "react";
 import { GrView } from "react-icons/gr";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Link from "next/link";
+import Swal from "sweetalert2";
+import { useRouter } from 'next/navigation'
 const RecipeCart = ({recipe}) => {
-    console.log(recipe);
-    const {title,instruction,recipeURL} = recipe
+    // console.log(recipe);
+    const {title,instruction,recipeURL} = recipe;
+    const router = useRouter()
+
+    const handleDelete = (id) => {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/recipes/${id}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.deletedCount > 0) {
+                Swal.fire({
+                  title: "Deleted!",
+                  text: "Your file has been deleted.",
+                  icon: "success",
+                });
+               router.push("/")
+              }
+            });
+        }
+      });
+    };
 
   return (
-    <div className="w-96 rounded-lg border-[1px] border-gray-300">
+    <div className="w-96 rounded-lg border-[1px] z-10 border-green-300 bg-white">
       <div className="m-2">
         <img
-          className="rounded-lg"
+          className="rounded-lg w-[400px] h-[300px]"
           src={recipeURL || "https://i.ibb.co/M9XVbSR/recipe.jpg"}
           alt=""
         />
@@ -39,11 +75,11 @@ const RecipeCart = ({recipe}) => {
         </div>
        
       </div>
-      <div className="flex items-center gap-5 my-4 mx-4">
-            <Link href={`/recipes/${recipe._id}`}><GrView  className="text-2xl" /></Link>
+      <div className="flex items-center gap-5 my-4 mx-4 ">
+            <Link href={`/recipes/${recipe._id}`}><GrView  className="text-2xl " /></Link>
             <Link href={`/editrecipe/${recipe._id}`}><FaEdit className="text-2xl" /></Link>
-            <RiDeleteBin5Line className="text-2xl"/>
-            </div>
+           <span  onClick={()=>handleDelete(recipe._id)}> <RiDeleteBin5Line className="text-2xl text-red-600"/></span>
+      </div>
     </div>
   );
 };

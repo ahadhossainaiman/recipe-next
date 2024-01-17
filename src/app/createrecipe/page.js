@@ -6,11 +6,13 @@ import Select from "react-select";
 import ingredients from '../../../ingredients.json';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/navigation";
 
 
 
 const CreateRecipePage = () => {
     const [ingredientsArray,setIngredientsArray] = useState([])
+    const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -40,6 +42,7 @@ const CreateRecipePage = () => {
                     position:  "top-center"
                   })
                   reset();
+                  router.push("/")
             }
           })
 
@@ -58,7 +61,7 @@ const CreateRecipePage = () => {
             onSubmit={handleSubmit(onSubmit)}
           >
             <h1 className=" text-5xl flex justify-center my-2 text-white">
-              Create a new account
+              Create a new Recipe
             </h1>
             <div className="flex gap-2 flex-1">
               <div className="form-control w-full">

@@ -6,8 +6,10 @@ import Select from "react-select";
 import ingredients from '../../../../ingredients.json';
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/navigation";
 
 const EditRecipePage = ({params}) => {
+  const router = useRouter();
     console.log(params?.id);
     const [ingredientsArray,setIngredientsArray] = useState([]);
     const [singleRecipe,setSingleRecipe] = useState({})
@@ -26,9 +28,11 @@ const EditRecipePage = ({params}) => {
       reset,
       formState: { errors },
     } = useForm();
-    const handleAddition = (e) => {
-      setIngredientsArray(e)
-    };
+    // const handleAddition = (e) => {
+    //   console.log(e);
+    //   setIngredientsArray(e)
+
+    // };
     const onSubmit = (data) => {
       console.log({...data,ingredients:ingredientsArray});
   
@@ -37,7 +41,7 @@ const EditRecipePage = ({params}) => {
               headers:{
                 'Content-Type':'application/json'
               },
-              body:JSON.stringify({...data,ingredients:ingredientsArray})
+              body:JSON.stringify({...data,ingredients:singleRecipe?.ingredients})
             })
             .then(res=>res.json())
             .then((data)=>{
@@ -46,13 +50,14 @@ const EditRecipePage = ({params}) => {
                   toast.success("Recipe Create Successfully !", {
                       position:  "top-center"
                     })
+                
+                    router.push(`/recipes/${params.id}`)
                     reset();
               }
             })
   
-      // console.log(data);
     };
-   
+   console.log(singleRecipe,"=============");
     return (
         <div data-theme="light">
         {/* <Toaster position="top-right" /> */}
@@ -65,7 +70,7 @@ const EditRecipePage = ({params}) => {
               onSubmit={handleSubmit(onSubmit)}
             >
               <h1 className=" text-5xl flex justify-center my-2 text-white">
-                Create a new account
+                Update Recipe
               </h1>
               <div className="flex gap-2 flex-1">
                 <div className="form-control w-full">
@@ -83,10 +88,13 @@ const EditRecipePage = ({params}) => {
                 </div>
                 <div className="form-control">
                   <Select
-                    defaultInputValue={singleRecipe?.ingredients}
+                  //  defaultValue={singleRecipe?.ingredients}
+                    value={singleRecipe?.ingredients}
                     isMulti
                     name="colors"
-                    onChange={handleAddition}
+                    onChange={(option)=>{
+                      setSingleRecipe({...singleRecipe,ingredients:option})
+                    }}
                     options={ingredients}
                     className="basic-multi-select"
                     classNamePrefix="select"
