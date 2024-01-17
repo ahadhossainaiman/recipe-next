@@ -27,7 +27,7 @@ const CreateRecipePage = () => {
   const onSubmit = (data) => {
     console.log({...data,ingredients:ingredientsArray});
 
-        fetch(`http://localhost:5000/recipes`,{
+        fetch(`https://recipe-next-server.vercel.app/recipes`,{
             method:'POST',
             headers:{
               'Content-Type':'application/json'
@@ -46,13 +46,12 @@ const CreateRecipePage = () => {
             }
           })
 
-    // console.log(data);
+
   };
   
   console.log(ingredientsArray);
   return (
     <div data-theme="light">
-      {/* <Toaster position="top-right" /> */}
       <header className="hero min-h-screen bg-base-200 bg-[url('https://media.gettyimages.com/id/1363638825/photo/vegan-plant-based-asian-food-recipes-with-rice-and-brown-rice-as.jpg?s=2048x2048&w=gi&k=20&c=D35HS8P0YsEwY6NyrlBs8txwUOviLcRBO6PhWqEpW9s=')]">
         <div className="min-w-[50%]">
           <form
@@ -121,7 +120,7 @@ const CreateRecipePage = () => {
             <div className="form-control bg-green-400 mt-6">
               <button>
                 {" "}
-                <input type="submit" value="SIGNUP" />
+                <input type="submit" value="Submit Recipe" />
               </button>
             </div>
           </form>

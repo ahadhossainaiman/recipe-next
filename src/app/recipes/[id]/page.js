@@ -7,13 +7,13 @@ import RecipeCart from "@/components/ui/RecipeCart";
 const RecipePage = async ({ params }) => {
   console.log(params);
   const singleRecipe = await fetch(
-    `http://localhost:5000/recipes/${params.id}`,{
+    `https://recipe-next-server.vercel.app/recipes/${params.id}`,{
       cache:'no-store'
     }
   );
   const data = await singleRecipe.json();
   console.log(data);
-  const recipes = await fetch(`http://localhost:5000/recipes`, {
+  const recipes = await fetch(`https://recipe-next-server.vercel.app/recipes`, {
     cache: "no-store",
   });
   const recipesItems = await recipes.json();

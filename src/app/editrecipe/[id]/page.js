@@ -14,7 +14,7 @@ const EditRecipePage = ({params}) => {
     const [ingredientsArray,setIngredientsArray] = useState([]);
     const [singleRecipe,setSingleRecipe] = useState({})
     useEffect(()=>{
-        fetch(`http://localhost:5000/recipes/${params.id}`)
+        fetch(`https://recipe-next-server.vercel.app/recipes/${params.id}`)
         .then(res=>res.json())
         .then((data)=>setSingleRecipe(data))
     },[])
@@ -36,7 +36,7 @@ const EditRecipePage = ({params}) => {
     const onSubmit = (data) => {
       console.log({...data,ingredients:ingredientsArray});
   
-          fetch(`http://localhost:5000/recipes/${params.id}`,{
+          fetch(`https://recipe-next-server.vercel.app/recipes/${params.id}`,{
               method:'PUT',
               headers:{
                 'Content-Type':'application/json'
@@ -57,7 +57,6 @@ const EditRecipePage = ({params}) => {
             })
   
     };
-   console.log(singleRecipe,"=============");
     return (
         <div data-theme="light">
         {/* <Toaster position="top-right" /> */}
@@ -88,7 +87,6 @@ const EditRecipePage = ({params}) => {
                 </div>
                 <div className="form-control">
                   <Select
-                  //  defaultValue={singleRecipe?.ingredients}
                     value={singleRecipe?.ingredients}
                     isMulti
                     name="colors"
@@ -134,7 +132,7 @@ const EditRecipePage = ({params}) => {
               <div className="form-control bg-green-400 mt-6">
                 <button>
                   {" "}
-                  <input type="submit" value="SIGNUP" />
+                  <input type="submit" value="Resubmit Recipe" />
                 </button>
               </div>
             </form>

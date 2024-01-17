@@ -7,10 +7,8 @@ import Link from "next/link";
 import Swal from "sweetalert2";
 import { useRouter } from 'next/navigation'
 const RecipeCart = ({recipe}) => {
-    // console.log(recipe);
     const {title,instruction,recipeURL} = recipe;
     const router = useRouter()
-
     const handleDelete = (id) => {
       Swal.fire({
         title: "Are you sure?",
@@ -22,7 +20,7 @@ const RecipeCart = ({recipe}) => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/recipes/${id}`, {
+          fetch(`https://recipe-next-server.vercel.app/recipes/${id}`, {
             method: "DELETE",
             headers: {
               "Content-Type": "application/json",

@@ -2,7 +2,7 @@ import RecipeCart from "@/components/ui/RecipeCart";
 import SearchInput from "@/components/ui/SearchInput";
 
 export default async function Home({ searchParams }) {
-  const recipes = await fetch(`http://localhost:5000/recipes?title=${searchParams.title}`, {
+  const recipes = await fetch(`https://recipe-next-server.vercel.app/recipes?title=${searchParams.title}`, {
     cache: "no-store",
   });
   const data = await recipes.json();
