@@ -10,8 +10,7 @@ import { useRouter } from "next/navigation";
 
 const EditRecipePage = ({params}) => {
   const router = useRouter();
-    console.log(params?.id);
-    const [ingredientsArray,setIngredientsArray] = useState([]);
+  
     const [singleRecipe,setSingleRecipe] = useState({})
     useEffect(()=>{
         fetch(`https://recipe-next-server.vercel.app/recipes/${params.id}`)
@@ -28,13 +27,8 @@ const EditRecipePage = ({params}) => {
       reset,
       formState: { errors },
     } = useForm();
-    // const handleAddition = (e) => {
-    //   console.log(e);
-    //   setIngredientsArray(e)
-
-    // };
+ 
     const onSubmit = (data) => {
-      console.log({...data,ingredients:ingredientsArray});
   
           fetch(`https://recipe-next-server.vercel.app/recipes/${params.id}`,{
               method:'PUT',

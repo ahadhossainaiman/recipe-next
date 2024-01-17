@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<br><h5>INSTALL</h5>
 
-## Getting Started
+    1. Clone the repositories.
+    2. Open the folder in cmd.
+    3. Run `npm i` or `npm install`.
+    4. Run npm dev.
 
-First, run the development server:
+<h5>Front End Live Site</h5>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    link: https://recipe-next-client-ahadhossainaiman.vercel.app/
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<h5>Front End Code</h5>
 
-## Learn More
+    link: https://github.com/ahadhossainaiman/recipe-next
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<h5>Back End Code</h5>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    link: https://github.com/ahadhossainaiman/recipe-next-server
 
-## Deploy on Vercel
+<h5>Details & Features</h5>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1.Input fields for title, ingredients (List of ingredients is provided in the ingredients.json file in the recipe-next app), instruction (text area), and optional image/video.
+2.Validation to ensure required fields are filled in correctly.
+3.Display a list of recipes:
+4.Show recipe titles
+Allow users to click on a recipe to view its full details.
+5.View a recipe's details:
+Display the recipe's title, ingredients (formatted as a list), and instructions.
+6.Edit an existing recipe:
+Allow users to modify any of the recipe's information, including title, ingredients, instruction
+7.Delete a recipe:
+Provide a clear option to remove a recipe from the list.

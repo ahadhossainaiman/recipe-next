@@ -49,7 +49,6 @@ const CreateRecipePage = () => {
 
   };
   
-  console.log(ingredientsArray);
   return (
     <div data-theme="light">
       <header className="hero min-h-screen bg-base-200 bg-[url('https://media.gettyimages.com/id/1363638825/photo/vegan-plant-based-asian-food-recipes-with-rice-and-brown-rice-as.jpg?s=2048x2048&w=gi&k=20&c=D35HS8P0YsEwY6NyrlBs8txwUOviLcRBO6PhWqEpW9s=')]">

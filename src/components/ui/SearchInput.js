@@ -5,11 +5,13 @@ import React from "react";
 const SearchInput = () => {
   const router = useRouter();
   const handleQuery = (e) => {
-    fetch(`https://recipe-next-server.vercel.app/recipes?title=${e?.target?.value}`)
+    fetch(
+      `https://recipe-next-server.vercel.app/recipes?title=${e?.target?.value}`
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        router.push(`?title=${e?.target?.value}`)
+        router.push(`?title=${e?.target?.value}`);
       });
   };
   return (
